@@ -1,28 +1,45 @@
 <head>
-  <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js" type="text/javascript"></script>
+  <script> src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" type="text/javascript"</script>
 </head>
-
 <body>
-  <div id="container" style="width: 500px; height: 400px;"></div>
-</body>
-
+<canvas id="myChart" width="400" height="400"></canvas>
+  </body>
 <script>
-  anychart.onDocumentLoad(function () {
-    // create an instance of a pie chart
-    var chart = anychart.pie();
-    // set the data
-    chart.data([
-      ["Chocolate", 5],
-      ["Rhubarb compote", 2],
-      ["Crêpe Suzette", 2],
-      ["American blueberry", 2],
-      ["Buttermilk", 1]
-    ]);
-    // set chart title
-    chart.title("Top 5 pancake fillings");
-    // set the container element 
-    chart.container("container");
-    // initiate chart display
-    chart.draw();
-  });
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 </script>
